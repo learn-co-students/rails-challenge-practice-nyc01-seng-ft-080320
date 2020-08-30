@@ -1,7 +1,7 @@
 class BuildingsController < ApplicationController
 
     def index
-        @buildings = Buildings.all
+        @buildings = Building.all
     end
 
     def show
@@ -13,7 +13,7 @@ class BuildingsController < ApplicationController
     end
 
     def update
-        @building = Builidng.find(params[:id])
+        @building = Building.find(params[:id])
         if @building.update(building_params)
             redirect_to building_path(@building)
         else

@@ -3,6 +3,7 @@ class Building < ApplicationRecord
     has_many :companies, through: :offices
 
     validates :name, :country, :address, :rent_per_floor, :number_of_floors, presence: true
+    validates :number_of_floors, numericality: { only_integer: true }
 
     def number_of_floors_taken
         self.number_of_floors - self.number_of_floors_available.count
