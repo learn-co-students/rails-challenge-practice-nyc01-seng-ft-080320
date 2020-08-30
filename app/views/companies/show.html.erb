@@ -1,0 +1,16 @@
+<h1><%= @company.name %></h1>
+<h3>Offices at:</h3>
+<ul>
+<% @company.offices.each do |office| %>
+<li><%= office.building.name %> Floor: <%= office.floor%></li>
+    <%= office.building.address %>
+<% end %>
+</ul>
+<h3>Employees:</h3>
+<ul>
+<% @company.employees.each do |employee|%>
+    <li><%= employee.name %> <%= button_to "FIRED!", employee_path(employee), method: :delete %></li>
+<% end %>
+</ul>
+<%= button_to "Add employee", new_employee_path,  method: :get, params: {employee: {company: @company.id}} %>
+Total Rent: <%= @company.rent %>

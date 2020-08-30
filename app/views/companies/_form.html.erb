@@ -1,7 +1,7 @@
 <%= form_for @company do |f| %>
 	<ul>
-		<% if @company.errors.any? %>
-			<%= @company.errors.full_messages.each do |msg| %>
+		<% if flash[:errors] %>
+			<% flash[:errors].each do |msg| %>
 				<li><%= msg %></li>
 			<% end %>
 		<% end %>
@@ -18,8 +18,8 @@
 			<%= b_field.label b.name %>
 			<%= b_field.collection_check_boxes :offices, b.empty_offices, :floor, :floor %>
 		<% end %>
-	<% end %>
 	<br>
+	<% end %>
 
 
 	<%= f.submit %>
