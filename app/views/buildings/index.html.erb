@@ -1,0 +1,19 @@
+<h1>Buildings:</h1>
+
+<% @buildings.each do |building| %>
+
+<%= link_to building.name, building_path(building) %>
+    <h3>Floors of the building: </h3>
+        <ul>
+        <% (1..building.number_of_floors).each do |i| %>
+        <%# byebug %>
+            <% company_array = building.offices.where(floor: i)  %>
+            <% if company_array.length > 0 %>
+                <% company = company_array[0].company%>
+                <li>Floor <%= i %>: <%= link_to company.name, company_path(company) %></li>
+            <% else %>
+            <li>Floor <%= i %>:  <%= "No Company here" %></li>
+            <% end %>
+            <% end %>
+        </ul>
+    <% end %>
