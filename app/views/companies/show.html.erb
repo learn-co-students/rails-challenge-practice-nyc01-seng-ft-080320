@@ -1,0 +1,16 @@
+<h1> <%=@company.name%> </h1>
+
+<h3> Offices Located in: </h3>
+
+<li><%=@company.location%></li>
+
+<h3> Company Employees: </h3>
+<%@company.employees.each do |employee|%>
+<ul>
+<li> <%=employee.name%> </li>
+</ul>
+<%end%>
+
+
+
+
