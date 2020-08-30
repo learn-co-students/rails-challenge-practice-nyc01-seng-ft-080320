@@ -1,0 +1,13 @@
+<h1><%= @building.name %></h1>
+<h2>Companies in this Builidng:</h2>
+<ul>
+    <% @building.companies.uniq.each do |company|%>
+        <li><%= link_to company.name, company_path(company) %></li>
+    <% end.uniq%>
+</ul>
+
+<h2>Total Current Income Via Rent for <%= @building.name %>:</h2>
+
+<ul>
+    <li><%= @building.total_rent_being_made %></li>
+</ul>
