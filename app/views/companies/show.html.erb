@@ -1,0 +1,22 @@
+<h1><%= @company.name %></h1>
+<hr>
+<br>
+<ul>
+    <% @company.buildings.each do |b| %>
+        <p><li><%= b.name %> | Rent per floor: $<%= b.rent_per_floor %></li></p>
+            <ul>
+                <% b.offices.each do |o| %>
+                    <li><%= o.floor %></li>
+                <% end %>
+            </ul>
+    <% end %>
+</ul>
+<br>
+<h2>Employees</h2>
+    <ol>
+        <% @company.employees.each do |e| %>
+            <p><li><%= e.name %> | <%= e.title %> | <%= button_to "Delete", employee_path(e), method: :delete %></li></p>
+        <% end %>
+    </ol>
+
+       
