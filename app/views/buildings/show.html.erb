@@ -2,7 +2,7 @@
 Companies in the building:
 <ul>
 <% @building.companies.each do |company| %>
-    <li><%= link_to company.name, company_path(company) %> | Floor<%= company.floor %>/li>
+    <li><%= link_to company.name, company_path(company) %> | Floor(s): <%= company.offices.select {|office| office.building_id == @building.id }.map(&:floor).join(" ") %></li>
 <% end %>
 Total income:
 <%= @building.income %>

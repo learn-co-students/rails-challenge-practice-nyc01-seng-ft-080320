@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   resources :buildings
   resources :companies
   resources :employees
+  resources :offices
 end
