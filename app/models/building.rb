@@ -16,4 +16,14 @@ class Building < ApplicationRecord
     number_of_floors_available.map { |f| offices.build(floor: f) }
   end
 
+    # def available_offices
+    #   @building.empty_offices.each{|office| office.floor} 
+    # end
+
+  def total_rent
+     rented = self.companies.count 
+     self.rent_per_floor * rented
+  end
+
+
 end
