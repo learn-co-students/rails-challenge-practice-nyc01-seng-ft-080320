@@ -1,3 +1,9 @@
+Building.destroy_all
+Company.destroy_all
+Employee.destroy_all
+Office.destroy_all
+
+
 weworks = [
   {name: "Finsbury Pavement", 
    country: "UK", 

@@ -1,0 +1,20 @@
+<h1> <%=@company.name%> </h1>
+
+<h3> Offices Located in: </h3>
+<%@company.offices.each do |office|%>
+    <li><%= office.location %></li>
+<% end %>
+<h3>Total Rent:</h3>
+<p><%=@company.rent%></p>
+
+<h3> Company Employees: </h3>
+<%@company.employees.each do |employee|%>
+<ul>
+<li> <%=link_to employee.name, employee_path(employee)%> <%= link_to "[Delete Employee]", employee_path(employee), method: :delete, data: {confirm: "Are you sure?"} %>--> </li>
+</ul>
+<%end%>
+
+<%=link_to "Hire New Employee", new_employee_path%>
+
+
+
