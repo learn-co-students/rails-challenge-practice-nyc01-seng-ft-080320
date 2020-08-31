@@ -1,0 +1,43 @@
+<h1><%= @company.name %></h1><br>
+<% @company.offices.each do |o| %>
+<h3>Floor: <%= o.floor %></h3>
+<h3>Building Name: <%= o.building.name %></h3>
+<% end%>
+<h3>Total Profit: <%= @company.total_rent_paid %></h3>
+<h3>Employees:</h3>
+<p>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Title</th>
+            <th>Delete Employee</th>
+        </tr>    
+            <% @company.employees.each do |e|%>
+        <tr>
+            <td><%= e.name%></td>
+            <td><%= e.title%></td>
+            <td><%= button_to "Delete", employee_path(e), method: :delete %></td>
+        </tr>   
+            <% end%>
+    </table>
+</p>
+
+<!-- not submitting -->
+<%= form_with model: @company do |f| %>
+  Employee:
+  
+    <%= f.fields_for :employees_attributes do |e_form| %><br>
+      
+        <%= e_form.label :name %>
+        <%= e_form.text_field :name %><br>
+ 
+        <%= e_form.label :title %>
+        <%= e_form.text_field :title %><br>
+        
+       <%= f.submit "Add Employee" %><br><br>
+    <% end %>
+
+<% end %>
+
+
+
