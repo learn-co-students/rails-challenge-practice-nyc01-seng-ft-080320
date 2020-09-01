@@ -4,6 +4,7 @@ class Building < ApplicationRecord
 
     validates :name, :country, :address, :rent_per_floor, :number_of_floors, presence: true
     validates :number_of_floors, numericality: { only_integer: true }
+    accepts_nested_attributes_for :offices
 
     def number_of_floors_taken
         self.number_of_floors - self.number_of_floors_available.count

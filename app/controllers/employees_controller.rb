@@ -8,12 +8,13 @@ class EmployeesController < ApplicationController
     end
 
     def create
-        @employee = Employee.create(employee_params)
-        #raise params.inspect
-        if @employee.valid?
-            redirect_to companies_path
-        else 
-            render :new
+        employee = Employee.create(employee_params)
+            #byebug
+        if employee.valid?
+            redirect_to company_path(employee.company)
+        else
+            flash[:errors] = employee.errors.full_messages 
+            redirect_to company_path(employee.company)
         end
     end
 

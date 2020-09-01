@@ -4,6 +4,42 @@
 <h3>Building Name: <%= o.building.name %></h3>
 <% end%>
 <h3>Total Profit: <%= @company.total_rent_paid %></h3>
+<h3>Add an Employee:</h3>
+<!-- not submitting -->
+
+<% if flash[:errors] %>
+    <ul>
+        <% flash[:errors].each do |e|%>
+            <li><%= e %></li>
+        <% end %>
+    </ul>
+<% end %>
+
+
+<%= form_for @employee do |f| %>
+<%= f.hidden_field :company_id, value: @company.id %><br>
+<%= f.label :name %><br>
+<%= f.text_field :name %><br>
+<%= f.label :title %><br>
+<%= f.text_field :title %><br>
+<%= f.submit "Create Employee" %><br>
+<% end%>
+
+
+<%# form_with model: @company, method: 'patch', local: true  do |f| %>
+  
+    <%# f.fields_for :employees, @company.employees.build do |e_form|%><br>
+      
+        <%# e_form.label :name %>
+        <%# e_form.text_field :name %><br>
+ 
+        <%# e_form.label :title %>
+        <%# e_form.text_field :title %><br>
+        
+       <%# f.submit "Add Employee" %><br><br>
+    <%# end %>
+
+<%# end %>
 <h3>Employees:</h3>
 <p>
     <table>
@@ -16,28 +52,13 @@
         <tr>
             <td><%= e.name%></td>
             <td><%= e.title%></td>
-            <td><%= button_to "Delete", employee_path(e), method: :delete %></td>
+              <td><%= button_to "Delete Employee", employee_path(e), method: :delete %>
         </tr>   
             <% end%>
     </table>
 </p>
 
-<!-- not submitting -->
-<%= form_with model: @company do |f| %>
-  Employee:
-  
-    <%= f.fields_for :employees_attributes do |e_form| %><br>
-      
-        <%= e_form.label :name %>
-        <%= e_form.text_field :name %><br>
- 
-        <%= e_form.label :title %>
-        <%= e_form.text_field :title %><br>
-        
-       <%= f.submit "Add Employee" %><br><br>
-    <% end %>
 
-<% end %>
 
 
 

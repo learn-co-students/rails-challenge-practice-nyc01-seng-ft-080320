@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
     resources :buildings, except: [:new, :create, :destroy]
-    resources :companies, only: [:new, :show, :create, :edit, :update]
+    resources :companies
     #resources :employee
     resources :offices, except:[:destroy]
     resources :employees
